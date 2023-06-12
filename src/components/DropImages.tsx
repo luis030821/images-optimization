@@ -9,7 +9,7 @@ import useDownload from "./hooks/useDownload";
 import { formats } from "./data/imagesFormat";
 export function DropImages() {
   const [files, setFiles] = useState<Array<File & { preview: string }>>();
-  const [filesOp, setFilesOp] = useState<unknown[]>();
+  const [filesOp, setFilesOp] = useState<{ name: string; img: Blob }[]>();
   const [quality, setQ] = useState("80");
   const [format, setFormat] = useState("webp");
   const { getRootProps, getInputProps } = useDropzone({

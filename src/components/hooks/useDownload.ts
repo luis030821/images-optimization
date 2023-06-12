@@ -1,8 +1,8 @@
 import { downloadImages } from "../downloadImages";
 
-function useDownload(filesOp: unknown) {
+function useDownload(filesOp: { name: string; img: Blob }[] | undefined) {
   const download = async () => {
-    await downloadImages(filesOp);
+    if (filesOp != undefined) await downloadImages(filesOp);
   };
   return { download };
 }

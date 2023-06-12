@@ -3,7 +3,7 @@ import { eliminarExtension } from "../services/deleteExtension";
 
 function useOptimization(
   files: Array<File & { preview: string }> | undefined,
-  setFilesOp: (data: unknown[]) => void,
+  setFilesOp: (data: { name: string; img: Blob }[]) => void,
   data: object
 ) {
   const optimizationFetch = async () => {

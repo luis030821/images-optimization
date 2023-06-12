@@ -28,15 +28,18 @@ export function DropImages() {
     format,
   });
   const ArraySize = (files) => {
-    const sum = 0;
+    let sum = 0;
     files.forEach((x) => {
-      sym = x.size + sum;
+      sum = x.size + sum;
     });
+    return sum;
   };
   const ArraysSizeOp = (files) => {
+    let sum = 0;
     files.forEach((x) => {
-      sym = x.img.size + sum;
+      sum = x.img.size + sum;
     });
+    return sum;
   };
   const { download } = useDownload(filesOp);
   return (
@@ -64,26 +67,12 @@ export function DropImages() {
 
       <div>
         {files != undefined && (
-          <p>
-            {files.length == 1 ? (
-              mostrarPesoArchivo(files[0].size)
-            ) : (
-              <>
-                {mostrarPesoArchivo(
-                  files?.reduce((acc, next) => acc.size + next.size)
-                )}
-              </>
-            )}
-          </p>
+          <p>El peso de los archivos: {mostrarPesoArchivo(ArraySize(files))}</p>
         )}
         {filesOp != undefined && (
           <p>
             El peso optimizado total es:{" "}
-            {filesOp.length == 1
-              ? mostrarPesoArchivo(filesOp[0].img.size)
-              : mostrarPesoArchivo(
-                  filesOp?.reduce((acc, next) => acc.img?.size + next.img?.size)
-                )}
+            {mostrarPesoArchivo(ArraysSizeOp(filesOp))}
           </p>
         )}
         {filesOp != undefined && (

@@ -8,7 +8,8 @@ function useOptimization(files, setFilesOp, data) {
     };
     const p = new URLSearchParams(params);
     // https://imagescompress-luisgarrido0987.b4a.run
-    const url = `http://localhost:3001/?${p}`;
+    //http://localhost:3001
+    const url = `https://imagescompress-luisgarrido0987.b4a.run/?${p}`;
     toast.promise(
       async () => {
         const res = await Promise.all(
@@ -17,6 +18,9 @@ function useOptimization(files, setFilesOp, data) {
             form.append("image", file);
             const response = await fetch(url, {
               method: "POST",
+              headers: {
+                "Access-Control-Allow-Origin": "*",
+              },
               body: form,
             });
             const img = await response.blob();

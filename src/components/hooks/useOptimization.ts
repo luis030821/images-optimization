@@ -11,9 +11,7 @@ function useOptimization(
       ...data,
     };
     const p = new URLSearchParams(params);
-    // https://imagescompress-luisgarrido0987.b4a.run
-    //http://localhost:3001
-    const url = `http://localhost:3001/?${p}`;
+    const url = `https://imagescompress-luisgarrido0987.b4a.run/?${p}`;
     if (files !== undefined) {
       toast.promise(
         async () => {
